@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hometown_mobile/android/screens/android_main.dart';
+import 'package:hometown_mobile/ios/screens/ios_main.dart';
 
 void main() {
   runApp(
@@ -11,15 +15,6 @@ class HomeTownApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: SafeArea(
-          bottom: false,
-          child: Center(
-            child: Image.asset('assets/images/mogi.png'),
-          ),
-        ),
-      ),
-    );
+    return Platform.isIOS ? const IOSMain() : const AndroidMain();
   }
 }
