@@ -12,12 +12,45 @@ class _IOSMainState extends State<IOSMain> {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-      home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Image.asset('assets/images/mogi.png'),
-          ),
+      home: CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.home,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.search,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.camera,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.heart_fill,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.settings,
+              ),
+            ),
+          ],
         ),
+        tabBuilder: (BuildContext context, int index) {
+          return CupertinoTabView(
+            builder: (_) {
+              return Center(
+                child: Text('쿠퍼티노 탭바 index : $index'),
+              );
+            },
+          );
+        },
       ),
     );
   }
